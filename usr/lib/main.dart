@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'home_screen.dart';
 import 'game_screen.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
   runApp(const MyApp());
 }
 
@@ -17,20 +24,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         brightness: Brightness.dark,
         primaryColor: Colors.green[800],
-        scaffoldBackgroundColor: Colors.grey[900],
         fontFamily: 'Arial',
-        elevatedButtonTheme: ElevatedButtonThemeData(
-          style: ElevatedButton.styleFrom(
-            backgroundColor: Colors.green[600],
-            foregroundColor: Colors.white,
-            padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
-            textStyle: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-          ),
-        ),
-        textTheme: const TextTheme(
-          displayLarge: TextStyle(fontSize: 36.0, fontWeight: FontWeight.bold, color: Colors.white),
-          bodyLarge: TextStyle(fontSize: 16.0, color: Colors.white70),
-        ),
       ),
       initialRoute: '/',
       routes: {
